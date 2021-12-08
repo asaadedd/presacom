@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { model, Model } from "mongoose";
+import { model, Model, Document } from "mongoose";
 import { SupplierDto } from "@presacom/models";
 const Schema = mongoose.Schema;
 

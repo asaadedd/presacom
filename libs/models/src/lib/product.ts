@@ -6,6 +6,8 @@ export enum ProductTypes {
 export interface ProductDto {
   title: string;
   type: ProductTypes;
+  __v?: any;
+  _id?: string;
 }
 
 export interface ProductWithStock extends ProductDto {

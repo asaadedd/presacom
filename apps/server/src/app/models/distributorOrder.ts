@@ -1,7 +1,7 @@
 import { model, Model, Schema, Document } from "mongoose";
 import { DistributorOrderDto } from "@presacom/models";
 
-export type IOrder = DistributorOrderDto & Document;
+export type IDistributorOrder = DistributorOrderDto & Document;
 
 const orderSchema = new Schema( {
   type: { type: String, required: true },
@@ -12,4 +12,4 @@ const orderSchema = new Schema( {
   timestamps: true,
 } );
 
-export const Order: Model<IOrder> = model('Order', orderSchema);
+export const DistributorOrder: Model<IDistributorOrder> = model('DistributorOrder', orderSchema);

@@ -8,6 +8,8 @@ export interface OrderDto {
   price: number;
   returned?: boolean;
   entries: OrderEntry[];
+  __v?: any;
+  _id?: string;
 }
 
 export interface SupplierOrderDto extends OrderDto {

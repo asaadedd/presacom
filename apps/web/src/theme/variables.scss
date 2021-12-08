@@ -1,0 +1,80 @@
+@function color($key: "blue") {
+  @return map-get($colors, $key);
+}
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@function gray($key: "100") {
+  @return map-get($grays, $key);
+}
+
+// Brand Colors
+$blue: #4e73df;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #e74a3b;
+$orange: #fd7e14;
+$yellow: #f6c23e;
+$green: #1cc88a;
+$teal: #20c997;
+$cyan: #36b9cc;
+$white: #fff;
+$gray-100: #f8f9fc;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #858796;
+$gray-700: #495057;
+$gray-800: #5a5c69;
+$gray-900: #212529;
+$black: #000;
+$grays: (100: $gray-100, 200: $gray-200, 300: $gray-300, 400: $gray-400, 500: $gray-500, 600: $gray-600, 700: $gray-700, 800: $gray-800, 900: $gray-900);
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+);
+$colors: (blue: $blue, indigo: $indigo, purple: $purple, pink: $pink, red: $red, orange: $orange, yellow: $yellow, green: $green, teal: $teal, cyan: $cyan, white: $white, gray: $gray-600,gray-dark: $gray-800);
+$theme-color-interval: 8%;
+
+$min-contrast-ratio: 1 !default;
+$body-bg: $gray-100;
+
+// Grid
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1540px);
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+// Cards
+$card-border-width: 0;
+$card-border-color: $gray-200;
+$card-cap-bg: $white;
+$card-cap-color: $blue;
+$card-bg: $white;
+
+// Buttons
+$input-btn-focus-width: 0;
+$btn-active-bg-shade-amount: 40%;
+
+// Tables
+$table-border-color: $gray-100;
+$table-variants: (
+  "primary":    theme-color("primary"),
+  "secondary":  theme-color("secondary"),
+  "success":    theme-color("success"),
+  "info":       theme-color("info"),
+  "warning":    theme-color("warning"),
+  "danger":     theme-color("danger"),
+  "light":      $gray-100,
+  "dark":       $gray-800,
+) !default;

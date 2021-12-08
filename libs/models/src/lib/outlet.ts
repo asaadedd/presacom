@@ -3,6 +3,8 @@ export interface OutletDto {
   address: string;
   phoneNumber?: string;
   email?: string;
+  __v?: any;
+  _id?: string;
 }
 
 export interface OutletStockDto {
@@ -10,4 +12,6 @@ export interface OutletStockDto {
   outletId: string;
   price: number;
   quantity: number;
+  __v?: any;
+  _id?: string;
 }

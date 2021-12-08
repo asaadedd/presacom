@@ -6,6 +6,8 @@ export interface SupplierDto {
   phoneNumber?: string;
   iban: string;
   email?: string;
+  __v?: any;
+  _id?: string;
 }
 
 export interface SupplierStockDto {
@@ -13,6 +15,8 @@ export interface SupplierStockDto {
   supplierId: string;
   price: number;
   quantity: number;
+  __v?: any;
+  _id?: string;
 }
 
 
