@@ -16,7 +16,9 @@ function DashboardWidget({children, title, actions}: ComponentProps<DashboardWid
           <div>{actions}</div>
         </div>
       </Card.Header>
-      {children}
+      <Card.Body>
+        {children}
+      </Card.Body>
     </Card>
   )
 }

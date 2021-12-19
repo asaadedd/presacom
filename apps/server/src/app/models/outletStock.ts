@@ -4,8 +4,8 @@ import { OutletStockDto } from "@presacom/models";
 export type IOutletStock = OutletStockDto & Document;
 
 const outletStockSchema = new Schema( {
-  productId: { type: Schema.Types.ObjectId, required: true },
-  outletId: { type: Schema.Types.ObjectId, required: true },
+  productId: { type: String, required: true },
+  outletId: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
 }, {

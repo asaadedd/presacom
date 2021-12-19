@@ -7,6 +7,7 @@ import { isPendingAction, isRejectedAction } from "../../../shared/utils/store";
 import { toast } from "react-toastify";
 import { AsyncEntityState } from "../../../shared/models/entity";
 import { formatOrdersInformation } from "../../../shared/utils/order";
+import { CustomOrderInformation } from "../../../shared/models/orders";
 
 export type SupplierState = {
   suppliers: AsyncEntityState<SupplierInformation>;
@@ -15,7 +16,7 @@ export type SupplierState = {
 
 const suppliersAdapter = createEntityAdapter<SupplierInformation>({
   selectId: (a) => a._id || a.cui,
-  sortComparer: (a, b) => a.name.localeCompare(b.name),
+  sortComparer: (a, b) => a?.name?.localeCompare(b?.name),
 });
 
 const initialState: SupplierState = {
@@ -35,30 +36,24 @@ export const getSuppliers = createAsyncThunk<SupplierDto[]>(
   }
 );
 
-export const getSupplierDetails = createAsyncThunk<SupplierInformation, string>(
-  'supplier/getSupplierDetails',
-  async (payload, { rejectWithValue }) => {
-    try {
-      const response = await axios.get<SupplierDto>(`/api/supplier/${payload}`);
-      const products = await axios.get<ProductWithStock[]>(`/api/supplier/${payload}/product`);
-      const orders = await axios.get<SupplierOrderDto[]>('/api/supplier/order');
-      return {
-        ...response.data,
-        products: products.data,
-        orders: formatOrdersInformation(orders.data, products.data)
-      };
-    } catch (err) {
-      return rejectWithValue(err)
-    }
-  }
-);
-
 export const addSupplier = createAsyncThunk<SupplierDto, SupplierDto>(
   'supplier/addSuppliers',
   async (payload, { rejectWithValue }) => {
     try {
       const response = await axios.post<SupplierDto>('/api/supplier', payload);
       return response.data
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+);
+
+export const deleteSupplier = createAsyncThunk<void, string>(
+  'supplier/deleteSupplier',
+  async (payload, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/api/supplier/${payload}`);
+      return;
     } catch (err) {
       return rejectWithValue(err)
     }
@@ -78,6 +73,68 @@ export const importSuppliers = createAsyncThunk(
       }
       const response = await axios.post('/api/supplier/import', formData, config);
       return response.data
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+);
+
+export const importProducts = createAsyncThunk<void, {file: File, supplierId: string}>(
+  'supplier/importProducts',
+  async ({file, supplierId}, { rejectWithValue }) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file)
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+      await axios.post(`/api/supplier/${supplierId}/product/import`, formData, config);
+      return;
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+);
+
+export const getSupplierDetails = createAsyncThunk<SupplierInformation, string>(
+  'supplier/getSupplierDetails',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await axios.get<SupplierDto>(`/api/supplier/${payload}`);
+      const products = await axios.get<ProductWithStock[]>(`/api/supplier/${payload}/product`);
+      const orders = await axios.get<SupplierOrderDto[]>(`/api/supplier/${payload}/order`);
+
+      return {
+        ...response.data,
+        products: products.data,
+        orders: formatOrdersInformation(orders.data)
+      };
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+);
+
+export const placeSupplierOrder = createAsyncThunk<void, SupplierOrderDto>(
+  'supplier/placeSupplierOrder',
+  async (order, { rejectWithValue }) => {
+    try {
+      await axios.post(`/api/supplier/${order.supplierId}/order`, order);
+      return;
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+);
+
+export const returnSupplierOrder = createAsyncThunk<void, SupplierOrderDto>(
+  'supplier/returnSupplierOrder',
+  async (order, { rejectWithValue }) => {
+    try {
+      await axios.post(`/api/supplier/${order.supplierId}/order/${order._id}/return`);
+      return;
     } catch (err) {
       return rejectWithValue(err)
     }
@@ -121,6 +178,26 @@ export const supplierSlice = createSlice({
           });
         }
       })
+      .addCase(importSuppliers.fulfilled, (state, action) => {
+        state.suppliers.loading = false;
+        state.suppliers.error = undefined;
+      })
+      .addCase(deleteSupplier.fulfilled, (state, action) => {
+        state.suppliers.loading = false;
+        state.suppliers.error = undefined;
+      })
+      .addCase(importProducts.fulfilled, (state, action) => {
+        state.suppliers.loading = false;
+        state.suppliers.error = undefined;
+      })
+      .addCase(placeSupplierOrder.fulfilled, (state, action) => {
+        state.suppliers.loading = false;
+        state.suppliers.error = undefined;
+      })
+      .addCase(returnSupplierOrder.fulfilled, (state, action) => {
+        state.suppliers.loading = false;
+        state.suppliers.error = undefined;
+      })
       .addMatcher(isPendingAction('supplier'), (state, action) => {
         state.suppliers.loading = true;
         state.suppliers.error = undefined;
@@ -133,14 +210,14 @@ export const supplierSlice = createSlice({
   },
 });
 
-export const  { setSupplierId, resetSupplierId } = supplierSlice.actions;
 
-const selectState = (state: RootState) => state.supplier;
-const selectSuppliersAdapter = createSelector(selectState, (state) => state.suppliers);
-const selectSupplierId = createSelector(selectState, (state) => state.supplierId);
+export const selectSupplierState = (state: RootState) => state.supplier;
+const selectSuppliersAdapter = createSelector(selectSupplierState, (state) => state.suppliers);
+const selectSupplierId = createSelector(selectSupplierState, (state) => state.supplierId);
 const selectSupplierEntries = createSelector(selectSuppliersAdapter, (state) => state.entities);
 const suppliersSelector = suppliersAdapter.getSelectors(selectSuppliersAdapter);
 
+export const  { setSupplierId, resetSupplierId } = supplierSlice.actions;
 export const selectSuppliers = suppliersSelector.selectAll;
 export const selectSuppliersLoading = createSelector(selectSuppliersAdapter, (state) => state.loading);
 export const selectSuppliersError = createSelector(selectSuppliersAdapter, (state) => state.error);
@@ -153,8 +230,21 @@ export const selectSupplierDetails = createSelector([selectSupplierId, selectSup
     }
   }
 );
-// export const selectSuppliersLoading = createSelector(selectState, (state) => state.suppliersLoading);
-// export const selectSuppliersError = createSelector(selectState, (state) => state.suppliersError);
-// export const selectSupplierProducts = createSelector(selectState, (state) => state.products);
-// export const selectSuppliersProductsLoading = createSelector(selectState, (state) => state.productsLoading);
-// export const selectSuppliersProductsError = createSelector(selectState, (state) => state.productsError);
+export const selectSupplierProducts = createSelector([selectSupplierId, selectSupplierEntries],
+  (supplierId, entities): ProductWithStock[] => {
+    if (supplierId && entities[supplierId]) {
+      return entities[supplierId]?.products || [];
+    } else {
+      return [];
+    }
+  }
+);
+export const selectSupplierOrders = createSelector([selectSupplierId, selectSupplierEntries],
+  (supplierId, entities): CustomOrderInformation<SupplierOrderDto>[] => {
+    if (supplierId && entities[supplierId]) {
+      return entities[supplierId]?.orders || [];
+    } else {
+      return [];
+    }
+  }
+);

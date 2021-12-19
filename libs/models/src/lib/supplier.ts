@@ -1,3 +1,6 @@
+import { OrderDto } from "./order";
+import { StockDto } from "./stock";
+
 export interface SupplierDto {
   name: string;
   registrationNumber: string;
@@ -10,13 +13,12 @@ export interface SupplierDto {
   _id?: string;
 }
 
-export interface SupplierStockDto {
-  productId: string;
+export interface SupplierStockDto extends StockDto {
   supplierId: string;
-  price: number;
-  quantity: number;
-  __v?: any;
-  _id?: string;
 }
 
+
+export interface SupplierOrderDto extends OrderDto {
+  supplierId: string;
+}
 

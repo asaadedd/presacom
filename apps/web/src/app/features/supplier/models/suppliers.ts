@@ -1,9 +1,10 @@
-import { ProductWithStock, SupplierDto } from "@presacom/models";
+import { ProductWithStock, SupplierDto, SupplierOrderDto } from "@presacom/models";
 import { CustomOrderInformation } from "../../../shared/models/orders";
+import { TableHeader } from "../../../shared/models/table";
 
 export interface SupplierInformation extends SupplierDto {
   products?: ProductWithStock[];
-  orders?: CustomOrderInformation[];
+  orders?: CustomOrderInformation<SupplierOrderDto>[];
 }
 
 export enum SuppliersHeadersKeys {
@@ -14,11 +15,6 @@ export enum SuppliersHeadersKeys {
   PHONE_NUMBER = 'phoneNumber',
   IBAN = 'iban',
   EMAIL = 'email',
-}
-
-export interface TableHeader<T> {
-  key: T,
-  name: string;
 }
 
 export const supplierHeaders: TableHeader<SuppliersHeadersKeys>[] = [

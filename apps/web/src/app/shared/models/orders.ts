@@ -1,17 +1,11 @@
-import { TableHeader } from "../../features/supplier/models/suppliers";
+import { OrderDto, OrderEntry } from "@presacom/models";
+import { TableHeader } from "./table";
 
-export interface CustomOrderEntry {
-  productName?: string;
-  productId: string;
-  quantity: number;
-  unitPrice: number;
+export interface CustomOrderEntry extends OrderEntry {
   totalPrice: string;
 }
 
-export interface CustomOrderInformation {
-  _id?: string;
-  price: number;
-  returned?: boolean;
+export type CustomOrderInformation<T = OrderDto> = T & {
   entries: CustomOrderEntry[];
 }
 

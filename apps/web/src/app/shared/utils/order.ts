@@ -1,24 +1,18 @@
-import { OrderDto, ProductWithStock } from "@presacom/models";
+import { OrderDto } from "@presacom/models";
 import { CustomOrderInformation } from "../models/orders";
+import { format } from "date-fns";
 
-export function formatOrdersInformation(order: OrderDto[], products: ProductWithStock[]): CustomOrderInformation[] {
-  const productsMap = new Map();
-  products.forEach((prod) => {
-    productsMap.set(prod._id, prod);
-  });
-
-  return order.map((ord) => formatOrder(ord, productsMap))
+export function formatOrdersInformation<T extends OrderDto>(order: T[]): CustomOrderInformation<T>[] {
+  return order.map((ord) => formatOrder<T>(ord))
 }
 
-function formatOrder(ord: OrderDto, productsMap: Map<string, ProductWithStock>): CustomOrderInformation {
+function formatOrder<T extends OrderDto>(ord: T): CustomOrderInformation<T> {
   return {
-    _id: ord._id,
-    price: ord.price,
-    returned: ord.returned,
+    ...ord,
+    createdAt: format(new Date(ord.createdAt as string), 'dd-MM-yyyy'),
     entries: ord.entries.map((ent) => {
       return {
         ...ent,
-        productName: productsMap.get(ent.productId)?.title,
         totalPrice: (ent.unitPrice * ent.quantity).toFixed(2)
       };
     })

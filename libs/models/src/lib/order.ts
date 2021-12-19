@@ -1,4 +1,10 @@
+export enum OrderStatuses {
+  DELIVERED = 'livrat',
+  RETURNED = 'retur'
+}
+
 export interface OrderEntry {
+  productName: string;
   productId: string;
   quantity: number;
   unitPrice: number;
@@ -6,20 +12,10 @@ export interface OrderEntry {
 
 export interface OrderDto {
   price: number;
-  returned?: boolean;
+  status: OrderStatuses;
   entries: OrderEntry[];
+  createdAt?: string;
+  updatedAt?: string;
   __v?: any;
   _id?: string;
-}
-
-export interface SupplierOrderDto extends OrderDto {
-  supplierId: string;
-}
-
-export interface OutletOrderDto extends OrderDto {
-  outletId: string;
-}
-
-export interface DistributorOrderDto extends OrderDto {
-  outletId: string;
 }

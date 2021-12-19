@@ -1,7 +1,7 @@
-export interface DistributorStockDto {
-  productId: string;
-  price: number;
-  quantity: number;
-  __v?: any;
-  _id?: string;
-}
+import { OrderDto } from "./order";
+import { StockDto } from "./stock";
+
+export type DistributorStockDto = StockDto & {
+  supplierId: string;
+};
+export type DistributorOrderDto = OrderDto;

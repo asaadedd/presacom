@@ -1,5 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const location = useLocation();
@@ -12,8 +13,8 @@ export function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <Nav.Link active={isActiveRoute('/suppliers')} href="/suppliers">Furnizori</Nav.Link>
-            <Nav.Link active={isActiveRoute('/outlets')} href="/outlets">Puncte de desfacere</Nav.Link>
+            <Nav.Link as={Link} active={isActiveRoute('/suppliers')} to="/suppliers">Furnizori</Nav.Link>
+            <Nav.Link as={Link} active={isActiveRoute('/outlets')} to="/outlets">Puncte de desfacere</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

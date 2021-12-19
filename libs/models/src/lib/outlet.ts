@@ -1,17 +1,18 @@
+import { OrderDto } from "./order";
+import { StockDto } from "./stock";
+
 export interface OutletDto {
   name: string;
   address: string;
   phoneNumber?: string;
   email?: string;
-  __v?: any;
   _id?: string;
 }
 
-export interface OutletStockDto {
-  productId: string;
+export interface OutletStockDto extends StockDto {
   outletId: string;
-  price: number;
-  quantity: number;
-  __v?: any;
-  _id?: string;
+}
+
+export interface OutletOrderDto extends OrderDto {
+  outletId: string;
 }

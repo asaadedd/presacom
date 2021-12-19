@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
-import DashboardWidget from "../../../shared/presentation/DashboardWidget";
-import ProfitChart from "../../../shared/presentation/ProfitChart";
-import TimeboxSelector, { SelectedTime } from "../../../shared/presentation/TimeboxSelector";
+import DashboardWidget from "../../../shared/presentations/DashboardWidget";
+import ProfitChart from "../../../shared/presentations/ProfitChart";
+import TimeboxSelector, { SelectedTime } from "../../../shared/presentations/TimeboxSelector";
 import { useState } from "react";
 
 function Home() {

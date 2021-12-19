@@ -1,10 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { supplierSlice } from "./features/supplier/store/supplier";
+import { outletSlice } from "./features/outlet/store/outlet";
+import { outletOrdersSlice } from "./features/outlet/store/outletOrders";
+import { outletProductsSlice } from "./features/outlet/store/outletProducts";
 
 export const store = configureStore({
   reducer: {
-    supplier: supplierSlice.reducer
+    supplier: supplierSlice.reducer,
+    outlet: outletSlice.reducer,
+    outletOrders: outletOrdersSlice.reducer,
+    outletProducts: outletProductsSlice.reducer
   },
 });
 

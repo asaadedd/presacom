@@ -132,7 +132,7 @@ function TimeboxSelector(props: TimeboxSelectorProps) {
                        className="ms-2"
                        onChange={(e) => changeSelectedTime((props.selectedTime as any).selectionType, e.target.selectedIndex)}>
             {
-              options.map((opt, i) => <option value={i} key={i}>{opt}</option>)
+              options.map((opt, i) => <option value={i} key={opt}>{opt}</option>)
             }
           </Form.Select>
         ) : null

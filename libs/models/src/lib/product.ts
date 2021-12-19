@@ -1,6 +1,6 @@
 export enum ProductTypes {
-  NEWSPAPER = 'NEWSPAPER',
-  MAGAZINE = 'MAGAZINE',
+  NEWSPAPER = 'ziar',
+  MAGAZINE = 'revista',
 }
 
 export interface ProductDto {

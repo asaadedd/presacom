@@ -4,10 +4,10 @@ import { SupplierOrderDto } from "@presacom/models";
 export type ISupplierOrder = SupplierOrderDto & Document;
 
 const supplierOrderSchema = new Schema( {
-  type: { type: String, required: true },
+  supplierId: { type: String, required: true },
   price: { type: Number, required: true },
-  returned: { type: Boolean, required: false },
-  entries: [{ productId: String, quantity: Number, unitPrice: Number }],
+  status: { type: String, required: true },
+  entries: [{ productName: String, productId: String, quantity: Number, unitPrice: Number }],
 }, {
   timestamps: true,
 } );
