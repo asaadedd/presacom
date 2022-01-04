@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "61b25faeed716853cf0595ea"
+  },
+  "title": "New york times",
+  "type": "ziar",
+  "createdAt": {
+    "$date": "2021-12-09T19:57:34.097Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:57:34.097Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b25faeed716853cf0595ec"
+  },
+  "title": "Adevarul",
+  "type": "ziar",
+  "createdAt": {
+    "$date": "2021-12-09T19:57:34.102Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:57:34.102Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b25faeed716853cf0595ee"
+  },
+  "title": "Libertatea",
+  "type": "revista",
+  "createdAt": {
+    "$date": "2021-12-09T19:57:34.104Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:57:34.104Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b25faeed716853cf0595f0"
+  },
+  "title": "Mediafax",
+  "type": "ziar",
+  "createdAt": {
+    "$date": "2021-12-09T19:57:34.106Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:57:34.106Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "61b9137545b7ad83d19751e2"
+  },
+  "name": "Magazin Eroilor",
+  "address": "Strada Eroilor de la Tisa nr 1",
+  "phoneNumber": "0730313131",
+  "email": "magazin-eroilor@gmail.com",
+  "createdAt": {
+    "$date": "2021-12-14T21:58:13.517Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-14T21:58:13.517Z"
+  },
+  "__v": 0
+}]

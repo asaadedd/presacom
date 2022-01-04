@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
-import { getOutletDetails, selectOutletsLoading, setOutletId } from "../store/outlet";
+import { getOutletDetails, selectOutletDetails, selectOutletsLoading, setOutletId } from "../store/outlet";
 import LoadingOverlay from "../../../shared/presentations/LoadingOverlay";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import DashboardWidget from "../../../shared/presentations/DashboardWidget";
@@ -14,6 +14,7 @@ function OutletDetails() {
   const { id } = useParams<'id'>();
   const dispatch  = useAppDispatch();
   const outletLoading = useAppSelector(selectOutletsLoading);
+  const outletDetails = useAppSelector(selectOutletDetails);
 
   useEffect(() => {
     if (id) {
@@ -21,6 +22,10 @@ function OutletDetails() {
       dispatch(getOutletDetails(id));
     }
   }, [id, dispatch]);
+
+  if (!outletDetails) {
+    return null;
+  }
 
   return (
     <LoadingOverlay
@@ -31,7 +36,7 @@ function OutletDetails() {
         <Row>
           <Col xs="4" className="pr-2">
             <DashboardWidget title={<span className="fs-4 fw-bold">Detalii</span>} >
-              <OutletInfo outlet={}/>
+              <OutletInfo outlet={outletDetails} />
             </DashboardWidget>
           </Col>
           <Col xs="8" className="pr-2">

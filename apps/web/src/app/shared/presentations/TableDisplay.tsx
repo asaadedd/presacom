@@ -1,5 +1,5 @@
 import { Button, FormCheck, Table } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TableHeader } from "../models/table";
 
 interface TableDisplayProps<T = any> {
@@ -7,8 +7,8 @@ interface TableDisplayProps<T = any> {
   checkedIds?: string[];
   useCheckboxes?: boolean;
   headers: TableHeader<string>[];
-  onRowSelected: (data: T) => void;
-  onRowDeleted: (id: string) => void;
+  onRowSelected?: (data: T) => void;
+  onRowDeleted?: (id: string) => void;
   onRowChecked?: (ids: string[]) => void;
 }
 

@@ -167,6 +167,7 @@ const outletsSelector = outletsAdapter.getSelectors(selectOutletsAdapter);
 
 export const  { setOutletId, startOutletLoading, stopOutletLoading, setOutletErrors, resetOutletErrors } = outletSlice.actions;
 export const selectOutlets = outletsSelector.selectAll;
+export const selectOneOutlet = outletsSelector.selectById;
 export const selectOutletId = createSelector(selectOutletState, (state) => state.outletId);
 export const selectOutletsLoading = createSelector(selectOutletsAdapter, (state) => state.loading);
 export const selectOutletsError = createSelector(selectOutletsAdapter, (state) => state.error);

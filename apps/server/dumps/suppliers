@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "61b2526330a1cc57652f36d9"
+  },
+  "name": "Pap distribution",
+  "registrationNumber": "J24/2673/1996",
+  "cui": "6859665",
+  "address": "Str tisa nr 3",
+  "phoneNumber": "0730303032",
+  "iban": "RO49AAAA1B31007593840002",
+  "email": "pap@dist.ro",
+  "createdAt": {
+    "$date": "2021-12-09T19:00:51.965Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:00:51.965Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b2539a30a1cc57652f36eb"
+  },
+  "name": "Papper consulting",
+  "registrationNumber": "J24/2673/1995",
+  "cui": "6859664",
+  "address": "Str tisa nr 2",
+  "phoneNumber": "0730303031",
+  "iban": "RO49AAAA1B31007593840001",
+  "email": "paper@con.ro",
+  "createdAt": {
+    "$date": "2021-12-09T19:06:02.386Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:06:02.386Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b2569e5ff28133ba44dae4"
+  },
+  "name": "ETP papper",
+  "registrationNumber": "J24/2673/1997",
+  "cui": "6859666",
+  "address": "Str tisa nr 4",
+  "phoneNumber": "0730303034",
+  "iban": "RO49AAAA1B31007593840004",
+  "email": "etp@papper.ro",
+  "createdAt": {
+    "$date": "2021-12-09T19:18:54.109Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-09T19:18:54.109Z"
+  },
+  "__v": 0
+}]
