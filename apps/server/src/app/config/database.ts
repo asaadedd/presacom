@@ -21,7 +21,7 @@ const initDataForCollection = async (collection: string) => {
     }
   }
   return new Promise((response, reject) => {
-    exec(`mongoimport --db presacom2 --collection ${collection} --jsonArray --drop --file ./apps/server/dumps/${collection}`, (error, stdout, stderr) => {
+    exec(`mongoimport --db presacom --collection ${collection} --jsonArray --drop --file ./apps/server/dumps/${collection}`, (error, stdout, stderr) => {
       if (error) {
         reject(error);
         return;
