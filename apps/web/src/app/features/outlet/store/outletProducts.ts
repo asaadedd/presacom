@@ -35,4 +35,4 @@ export const outletProductsSlice = createSlice({
 });
 
 const selectOutletProductsState = (state: RootState) => state.outletProducts;
-export const selectOutletOrders = createSelector(selectOutletProductsState, (state) => state.products);
+export const selectOutletProducts = createSelector(selectOutletProductsState, (state) => state.products);

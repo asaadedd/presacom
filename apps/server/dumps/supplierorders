@@ -1,216 +1,490 @@
 [{
   "_id": {
-    "$oid": "61b39bdf2190d4c9a229d12b"
+    "$oid": "61d622f1e2f1124dfef515d2"
   },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 2020,
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 2500,
+  "status": "retur",
+  "entries": [
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 100,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d622f1e2f1124dfef515d3"
+      }
+    },
+    {
+      "productName": "Libertatea",
+      "productId": "61b25faeed716853cf0595ee",
+      "quantity": 100,
+      "unitPrice": 5,
+      "_id": {
+        "$oid": "61d622f1e2f1124dfef515d4"
+      }
+    },
+    {
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 100,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d622f1e2f1124dfef515d5"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:00:01.611Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:00:52.198Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d622fde2f1124dfef51600"
+  },
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 2000,
   "status": "retur",
   "entries": [
     {
       "productName": "New york times",
       "productId": "61b25faeed716853cf0595ea",
-      "quantity": 10,
-      "unitPrice": 20,
+      "quantity": 50,
+      "unitPrice": 15,
       "_id": {
-        "$oid": "61b39bdf2190d4c9a229d12c"
+        "$oid": "61d622fde2f1124dfef51601"
       }
     },
     {
       "productName": "Adevarul",
       "productId": "61b25faeed716853cf0595ec",
-      "quantity": 10,
-      "unitPrice": 5,
+      "quantity": 50,
+      "unitPrice": 10,
       "_id": {
-        "$oid": "61b39bdf2190d4c9a229d12d"
+        "$oid": "61d622fde2f1124dfef51602"
       }
     },
     {
       "productName": "Libertatea",
       "productId": "61b25faeed716853cf0595ee",
-      "quantity": 10,
-      "unitPrice": 77,
+      "quantity": 50,
+      "unitPrice": 5,
       "_id": {
-        "$oid": "61b39bdf2190d4c9a229d12e"
+        "$oid": "61d622fde2f1124dfef51603"
       }
     },
     {
       "productName": "Mediafax",
       "productId": "61b25faeed716853cf0595f0",
-      "quantity": 10,
-      "unitPrice": 100,
+      "quantity": 50,
+      "unitPrice": 10,
       "_id": {
-        "$oid": "61b39bdf2190d4c9a229d12f"
+        "$oid": "61d622fde2f1124dfef51604"
       }
     }
   ],
   "createdAt": {
-    "$date": "2021-12-10T18:26:39.112Z"
+    "$date": "2022-01-05T23:00:13.345Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.040Z"
+    "$date": "2022-01-05T23:01:09.457Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b39de92190d4c9a229d16f"
+    "$oid": "61d6231ae2f1124dfef51632"
   },
   "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 900,
-  "status": "livrat",
+  "price": 4000,
+  "status": "retur",
   "entries": [
     {
       "productName": "New york times",
       "productId": "61b25faeed716853cf0595ea",
-      "quantity": 45,
-      "unitPrice": 20,
+      "quantity": 100,
+      "unitPrice": 15,
       "_id": {
-        "$oid": "61b39de92190d4c9a229d170"
-      }
-    }
-  ],
-  "createdAt": {
-    "$date": "2021-12-10T18:35:21.902Z"
-  },
-  "updatedAt": {
-    "$date": "2021-12-13T21:14:12.178Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61b3c6762190d4c9a229d17f"
-  },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 1082,
-  "status": "livrat",
-  "entries": [
-    {
-      "productName": "New york times",
-      "productId": "61b25faeed716853cf0595ea",
-      "quantity": 45,
-      "unitPrice": 20,
-      "_id": {
-        "$oid": "61b3c6762190d4c9a229d180"
+        "$oid": "61d6231ae2f1124dfef51633"
       }
     },
     {
       "productName": "Adevarul",
       "productId": "61b25faeed716853cf0595ec",
-      "quantity": 1,
-      "unitPrice": 5,
+      "quantity": 100,
+      "unitPrice": 10,
       "_id": {
-        "$oid": "61b3c6762190d4c9a229d181"
+        "$oid": "61d6231ae2f1124dfef51634"
       }
     },
     {
       "productName": "Libertatea",
       "productId": "61b25faeed716853cf0595ee",
-      "quantity": 1,
-      "unitPrice": 77,
+      "quantity": 100,
+      "unitPrice": 5,
       "_id": {
-        "$oid": "61b3c6762190d4c9a229d182"
+        "$oid": "61d6231ae2f1124dfef51635"
       }
     },
     {
       "productName": "Mediafax",
       "productId": "61b25faeed716853cf0595f0",
-      "quantity": 1,
-      "unitPrice": 100,
+      "quantity": 100,
+      "unitPrice": 10,
       "_id": {
-        "$oid": "61b3c6762190d4c9a229d183"
+        "$oid": "61d6231ae2f1124dfef51636"
       }
     }
   ],
   "createdAt": {
-    "$date": "2021-12-10T21:28:22.314Z"
+    "$date": "2022-01-05T23:00:42.385Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:29:55.777Z"
+    "$date": "2022-01-05T23:01:38.304Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b3c67a2190d4c9a229d1a2"
+    "$oid": "61d6232de2f1124dfef51685"
   },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 982,
-  "status": "livrat",
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 5000,
+  "status": "retur",
   "entries": [
-    {
-      "productName": "New york times",
-      "productId": "61b25faeed716853cf0595ea",
-      "quantity": 45,
-      "unitPrice": 20,
-      "_id": {
-        "$oid": "61b3c67a2190d4c9a229d1a3"
-      }
-    },
     {
       "productName": "Adevarul",
       "productId": "61b25faeed716853cf0595ec",
-      "quantity": 1,
-      "unitPrice": 5,
+      "quantity": 500,
+      "unitPrice": 10,
       "_id": {
-        "$oid": "61b3c67a2190d4c9a229d1a4"
+        "$oid": "61d6232de2f1124dfef51686"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:01:01.262Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:14:11.456Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d6233fe2f1124dfef516bf"
+  },
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 7500,
+  "status": "retur",
+  "entries": [
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 500,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d6233fe2f1124dfef516c0"
       }
     },
     {
       "productName": "Libertatea",
       "productId": "61b25faeed716853cf0595ee",
-      "quantity": 1,
-      "unitPrice": 77,
+      "quantity": 500,
+      "unitPrice": 5,
       "_id": {
-        "$oid": "61b3c67a2190d4c9a229d1a5"
+        "$oid": "61d6233fe2f1124dfef516c1"
       }
     }
   ],
   "createdAt": {
-    "$date": "2021-12-10T21:28:26.906Z"
+    "$date": "2022-01-05T23:01:19.382Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T20:35:57.509Z"
+    "$date": "2022-01-05T23:14:15.807Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b3c6852190d4c9a229d1c3"
+    "$oid": "61d6235ae2f1124dfef5172c"
   },
   "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 982,
-  "status": "livrat",
+  "price": 25000,
+  "status": "retur",
   "entries": [
     {
       "productName": "New york times",
       "productId": "61b25faeed716853cf0595ea",
-      "quantity": 45,
-      "unitPrice": 20,
+      "quantity": 1000,
+      "unitPrice": 15,
       "_id": {
-        "$oid": "61b3c6852190d4c9a229d1c4"
+        "$oid": "61d6235ae2f1124dfef5172d"
       }
     },
     {
-      "productName": "Adevarul",
-      "productId": "61b25faeed716853cf0595ec",
-      "quantity": 1,
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 1000,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d6235ae2f1124dfef5172e"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:01:46.905Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:14:22.727Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d62368e2f1124dfef51759"
+  },
+  "supplierId": "61b2539a30a1cc57652f36eb",
+  "price": 2500,
+  "status": "retur",
+  "entries": [
+    {
+      "productName": "Libertatea",
+      "productId": "61b25faeed716853cf0595ee",
+      "quantity": 500,
       "unitPrice": 5,
       "_id": {
-        "$oid": "61b3c6852190d4c9a229d1c5"
+        "$oid": "61d62368e2f1124dfef5175a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:02:00.256Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:14:20.102Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d626599c98d3ff8ef01e2a"
+  },
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 2500,
+  "status": "retur",
+  "entries": [
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 100,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d626599c98d3ff8ef01e2b"
       }
     },
     {
       "productName": "Libertatea",
       "productId": "61b25faeed716853cf0595ee",
-      "quantity": 1,
-      "unitPrice": 77,
+      "quantity": 100,
+      "unitPrice": 5,
       "_id": {
-        "$oid": "61b3c6852190d4c9a229d1c6"
+        "$oid": "61d626599c98d3ff8ef01e2c"
+      }
+    },
+    {
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 100,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d626599c98d3ff8ef01e2d"
       }
     }
   ],
   "createdAt": {
-    "$date": "2021-12-10T21:28:37.654Z"
+    "$date": "2022-01-05T23:14:33.490Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T20:37:11.924Z"
+    "$date": "2022-01-05T23:15:29.707Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d626ab9c98d3ff8ef01f2b"
+  },
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 2500,
+  "status": "livrat",
+  "entries": [
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 100,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d626ab9c98d3ff8ef01f2c"
+      }
+    },
+    {
+      "productName": "Libertatea",
+      "productId": "61b25faeed716853cf0595ee",
+      "quantity": 100,
+      "unitPrice": 5,
+      "_id": {
+        "$oid": "61d626ab9c98d3ff8ef01f2d"
+      }
+    },
+    {
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 100,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d626ab9c98d3ff8ef01f2e"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:15:55.404Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:15:55.404Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d628939c98d3ff8ef02375"
+  },
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 12500,
+  "status": "livrat",
+  "entries": [
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 500,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d628939c98d3ff8ef02376"
+      }
+    },
+    {
+      "productName": "Libertatea",
+      "productId": "61b25faeed716853cf0595ee",
+      "quantity": 500,
+      "unitPrice": 5,
+      "_id": {
+        "$oid": "61d628939c98d3ff8ef02377"
+      }
+    },
+    {
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 500,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d628939c98d3ff8ef02378"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:24:03.524Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:24:03.524Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d6289e9c98d3ff8ef023a2"
+  },
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 25000,
+  "status": "livrat",
+  "entries": [
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 1000,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d6289e9c98d3ff8ef023a3"
+      }
+    },
+    {
+      "productName": "Libertatea",
+      "productId": "61b25faeed716853cf0595ee",
+      "quantity": 1000,
+      "unitPrice": 5,
+      "_id": {
+        "$oid": "61d6289e9c98d3ff8ef023a4"
+      }
+    },
+    {
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 1000,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d6289e9c98d3ff8ef023a5"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:24:14.577Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:24:14.577Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d628ae9c98d3ff8ef023cc"
+  },
+  "supplierId": "61b2539a30a1cc57652f36eb",
+  "price": 55000,
+  "status": "livrat",
+  "entries": [
+    {
+      "productName": "New york times",
+      "productId": "61b25faeed716853cf0595ea",
+      "quantity": 2000,
+      "unitPrice": 15,
+      "_id": {
+        "$oid": "61d628ae9c98d3ff8ef023cd"
+      }
+    },
+    {
+      "productName": "Adevarul",
+      "productId": "61b25faeed716853cf0595ec",
+      "quantity": 1000,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d628ae9c98d3ff8ef023ce"
+      }
+    },
+    {
+      "productName": "Libertatea",
+      "productId": "61b25faeed716853cf0595ee",
+      "quantity": 1000,
+      "unitPrice": 5,
+      "_id": {
+        "$oid": "61d628ae9c98d3ff8ef023cf"
+      }
+    },
+    {
+      "productName": "Mediafax",
+      "productId": "61b25faeed716853cf0595f0",
+      "quantity": 1000,
+      "unitPrice": 10,
+      "_id": {
+        "$oid": "61d628ae9c98d3ff8ef023d0"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-01-05T23:24:30.529Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:24:30.529Z"
   },
   "__v": 0
 }]

@@ -1,5 +1,4 @@
 import { OrderDto, OrderEntry } from "@presacom/models";
-import { TableHeader } from "./table";
 
 export interface CustomOrderEntry extends OrderEntry {
   totalPrice: string;

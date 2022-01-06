@@ -8,6 +8,26 @@ import 'react-toastify/dist/ReactToastify.css';
 import OutletList from "./features/outlet/pages/OutletList";
 import SingleColumnLayout from "./shared/layouts/SingleColumnLayout";
 import OutletDetails from "./features/outlet/pages/OutletDetails";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js'
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
 export function App() {
   return (

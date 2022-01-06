@@ -1,69 +1,65 @@
 [{
   "_id": {
-    "$oid": "61b39bdf2190d4c9a229d13d"
-  },
-  "productId": {
-    "$oid": "61b25faeed716853cf0595ea"
-  },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 20,
-  "quantity": -405,
-  "createdAt": {
-    "$date": "2021-12-10T18:26:39.134Z"
-  },
-  "updatedAt": {
-    "$date": "2021-12-13T21:32:31.058Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61b39bdf2190d4c9a229d13f"
+    "$oid": "61d626ab9c98d3ff8ef01f39"
   },
   "productId": {
     "$oid": "61b25faeed716853cf0595ec"
   },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 5,
-  "quantity": -93,
+  "price": 10.5,
+  "quantity": 2600,
   "createdAt": {
-    "$date": "2021-12-10T18:26:39.136Z"
+    "$date": "2022-01-05T23:15:55.416Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.059Z"
+    "$date": "2022-01-05T23:24:30.543Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b39bdf2190d4c9a229d141"
+    "$oid": "61d626ab9c98d3ff8ef01f3b"
   },
   "productId": {
     "$oid": "61b25faeed716853cf0595ee"
   },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 77,
-  "quantity": -93,
+  "price": 5.25,
+  "quantity": 2600,
   "createdAt": {
-    "$date": "2021-12-10T18:26:39.137Z"
+    "$date": "2022-01-05T23:15:55.417Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.060Z"
+    "$date": "2022-01-05T23:24:30.544Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b39bdf2190d4c9a229d143"
+    "$oid": "61d626ab9c98d3ff8ef01f3d"
   },
   "productId": {
     "$oid": "61b25faeed716853cf0595f0"
   },
-  "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 100,
-  "quantity": -93,
+  "price": 10.5,
+  "quantity": 2600,
   "createdAt": {
-    "$date": "2021-12-10T18:26:39.141Z"
+    "$date": "2022-01-05T23:15:55.419Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.062Z"
+    "$date": "2022-01-05T23:24:30.546Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d628ae9c98d3ff8ef023de"
+  },
+  "productId": {
+    "$oid": "61b25faeed716853cf0595ea"
+  },
+  "price": 15.75,
+  "quantity": 2000,
+  "createdAt": {
+    "$date": "2022-01-05T23:24:30.542Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:24:30.542Z"
   },
   "__v": 0
 }]

@@ -1,15 +1,18 @@
+import { endOfMonth, startOfMonth } from 'date-fns';
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AsyncEntityState } from "../../../shared/models/entity";
-import { OutletDto } from "@presacom/models";
+import { GroupBy, OutletDto, ProfitData } from "@presacom/models";
 import axios from "axios";
 import { isPendingAction, isRejectedAction } from "../../../shared/utils/store";
 import { toast } from "react-toastify";
 import { RootState } from "../../../store";
-import { getOutletOrders } from "./outletOrders";
+import { ProfitFiltersData } from '../../home/store/distributor';
 
 export type OutletState = {
   outlets: AsyncEntityState<OutletDto>;
   outletId: string | null;
+  profit: ProfitData[];
+  filters: ProfitFiltersData;
 }
 
 const outletsAdapter = createEntityAdapter<OutletDto>({
@@ -19,7 +22,13 @@ const outletsAdapter = createEntityAdapter<OutletDto>({
 
 const initialState: OutletState = {
   outlets: outletsAdapter.getInitialState({ loading: false }),
-  outletId: null
+  outletId: null,
+  profit: [],
+  filters: {
+    groupBy: GroupBy.BY_WEEK,
+    startTime: startOfMonth(new Date()).toISOString(),
+    endTime: endOfMonth(new Date()).toISOString()
+  },
 }
 
 export const getOutlets = createAsyncThunk<OutletDto[]>(
@@ -84,10 +93,28 @@ export const getOutletDetails = createAsyncThunk<OutletDto, string>(
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.get<OutletDto>(`/api/outlet/${payload}`);
-      await dispatch(getOutletOrders(payload));
 
       return response.data;
     } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+);
+
+export const getOutletProfit = createAsyncThunk<ProfitData[], string>(
+  'outlet/getOutletProfit',
+  async (payload, { rejectWithValue, getState }) => {
+    try {
+      const state: any  = getState();
+      const startTime = selectOutletStartTime(state);
+      const endTime = selectOutletEndTime(state);
+      const groupBy = selectOutletGroupBy(state);
+      if (!startTime || !endTime || !groupBy) {
+        return [];
+      }
+      const response = await axios.get<ProfitData[]>(`/api/outlet/${payload}/profit`, { params: {startTime, endTime, groupBy} });
+      return response.data;
+    } catch (err: any) {
       return rejectWithValue(err)
     }
   }
@@ -101,18 +128,15 @@ export const outletSlice = createSlice({
     setOutletId(state, action: PayloadAction<string>) {
       state.outletId = action.payload;
     },
-    startOutletLoading(state) {
-      state.outlets.loading = true;
-    },
-    stopOutletLoading(state) {
-      state.outlets.loading = false;
-    },
     setOutletErrors(state, action: PayloadAction<string>) {
       state.outlets.error = action.payload;
     },
     resetOutletErrors(state) {
       state.outlets.error = undefined;
-    }
+    },
+    setOutletFilters(state, action: PayloadAction<ProfitFiltersData>) {
+      state.filters = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -148,6 +172,9 @@ export const outletSlice = createSlice({
           });
         }
       })
+      .addCase(getOutletProfit.fulfilled, (state, action) => {
+        state.profit = action.payload;
+      })
       .addMatcher(isPendingAction('outlet'), (state, action) => {
         state.outlets.loading = true;
         state.outlets.error = undefined;
@@ -165,11 +192,16 @@ const selectOutletsAdapter = createSelector(selectOutletState, (state) => state.
 const selectOutletEntries = createSelector(selectOutletsAdapter, (state) => state.entities);
 const outletsSelector = outletsAdapter.getSelectors(selectOutletsAdapter);
 
-export const  { setOutletId, startOutletLoading, stopOutletLoading, setOutletErrors, resetOutletErrors } = outletSlice.actions;
+export const  { setOutletId, setOutletErrors, resetOutletErrors, setOutletFilters } = outletSlice.actions;
+export const selectOutletStartTime = createSelector(selectOutletState, (state) => state.filters.startTime);
+export const selectOutletFilters = createSelector(selectOutletState, (state) => state.filters);
+export const selectOutletEndTime = createSelector(selectOutletState, (state) => state.filters.endTime);
+export const selectOutletGroupBy = createSelector(selectOutletState, (state) => state.filters.groupBy);
+export const selectOutletProfit = createSelector(selectOutletState, (state) => state.profit);
 export const selectOutlets = outletsSelector.selectAll;
 export const selectOneOutlet = outletsSelector.selectById;
+export const selectOutletsLength = createSelector(outletsSelector.selectAll, (outlets) => outlets.length);
 export const selectOutletId = createSelector(selectOutletState, (state) => state.outletId);
-export const selectOutletsLoading = createSelector(selectOutletsAdapter, (state) => state.loading);
 export const selectOutletsError = createSelector(selectOutletsAdapter, (state) => state.error);
 export const selectOutletDetails = createSelector([selectOutletId, selectOutletEntries],
   (outletId, entities): OutletDto | null | undefined => {

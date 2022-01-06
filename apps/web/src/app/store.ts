@@ -6,6 +6,7 @@ import { outletOrdersSlice } from "./features/outlet/store/outletOrders";
 import { outletProductsSlice } from "./features/outlet/store/outletProducts";
 import { distributorProductsSlice } from "./features/home/store/distributorProducts";
 import { distributorOrdersSlice } from "./features/home/store/distributorOrders";
+import { distributorSlice } from './features/home/store/distributor';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     outletProducts: outletProductsSlice.reducer,
     distributorProducts: distributorProductsSlice.reducer,
     distributorOrders: distributorOrdersSlice.reducer,
+    distributor: distributorSlice.reducer,
   },
 });
 

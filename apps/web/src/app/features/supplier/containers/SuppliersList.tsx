@@ -27,10 +27,12 @@ function SuppliersList() {
 
   return (
     <div className="mt-3">
-      <TableDisplay data={suppliers}
-                    headers={headers}
-                    onRowDeleted={deleteProvider}
-                    onRowSelected={goToSupplierDetails} />
+      <TableDisplay 
+        useActions={true}
+        data={suppliers}
+        headers={headers}
+        onRowDeleted={deleteProvider}
+        onRowSelected={goToSupplierDetails} />
     </div>
   )
 }

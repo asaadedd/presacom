@@ -2,16 +2,16 @@ import { Router } from "express";
 import {
   getProductsWithPriceFromStock,
   getProductWithPrice,
-} from "../services/product";
+} from "../utils/product";
 import { Product } from "../models/product";
 import { Outlet } from "../models/outlet";
 import { OutletStock } from "../models/outletStock";
 import { IOutletOrder, OutletOrder } from "../models/outletOrder";
 import { FilterQuery } from "mongoose";
-import { IDistributorOrder } from "../models/distributorOrder";
 import { OrderStatuses } from "@presacom/models";
 import { updateStockAfterOrder } from "../services/stock";
-import { DistributorStock } from "../models/distributorStock";
+import { DistributorOrder } from '../models/distributorOrder';
+import { getProfit } from '../services/profit';
 
 export const outletRouter = Router();
 
@@ -68,7 +68,7 @@ outletRouter.put('/:outletId', async (req, res, next) => {
 outletRouter.get('/:outletId/product', async (req, res, next) => {
   try {
     const stock = await OutletStock.find({ outletId: req.params.outletId }).exec();
-    const products = getProductsWithPriceFromStock(stock);
+    const products = await getProductsWithPriceFromStock(stock);
 
     res.send(products);
   } catch (e) {
@@ -96,8 +96,23 @@ outletRouter.post('/:outletId/order', async (req, res, next) => {
   try {
     const order = await OutletOrder.create(req.body);
 
-    await updateStockAfterOrder(order, DistributorStock, false, {});
-    await updateStockAfterOrder(order, OutletStock, true, { outletId: req.body.outletId });
+    await updateStockAfterOrder(order, OutletStock, false, { outletId: req.body.outletId });
+    res.send();
+  } catch (e) {
+    next(e);
+  }
+});
+
+outletRouter.post('/:outletId/order/:orderId/return', async (req, res, next) => {
+  try {
+    const order = await OutletOrder.findOne({ _id: req.params.orderId }).exec();
+
+    if (order.status !== OrderStatuses.RETURNED) {
+      await OutletOrder.findOneAndUpdate({ _id: req.params.orderId }, { $set: {status: OrderStatuses.RETURNED} }, {new: true}).exec();
+
+      await updateStockAfterOrder(order, OutletStock, true, { outletId: req.params.outletId });
+    }
+
     res.send();
   } catch (e) {
     next(e);
@@ -118,6 +133,18 @@ outletRouter.get('/:outletId/order', async (req, res, next) => {
     }
     const order = await OutletOrder.find(query).exec();
     res.send(order);
+  } catch (e) {
+    next(e);
+  }
+});
+
+outletRouter.get('/:outletId/profit', async (req, res, next) => {
+  try {
+    if (!req.query.groupBy || !req.query.startTime || !req.query.endTime) {
+      throw new Error('missing one of the parameters: groupBy, startTime, endTime');
+    }
+
+    res.send(await getProfit(OutletOrder, DistributorOrder, req.query as any, { outletId: req.params.outletId }));
   } catch (e) {
     next(e);
   }

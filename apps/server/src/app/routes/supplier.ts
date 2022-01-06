@@ -2,7 +2,7 @@ import { Router } from "express";
 import { Supplier } from "../models/supplier";
 import { Product } from "../models/product";
 import { SupplierStock } from "../models/supplierStock";
-import { getProductsWithPriceFromStock } from "../services/product";
+import { getProductsWithPriceFromStock } from "../utils/product";
 import { ISupplierOrder, SupplierOrder } from "../models/supplierOrder";
 import { UploadedFile } from "express-fileupload";
 import { getDataFromFile } from "../utils/file";
@@ -51,9 +51,7 @@ supplierRouter.post('/import', async (req, res, next) => {
 
 supplierRouter.get('/:supplierId', async (req, res, next) => {
   try {
-    console.log(11, req.params.supplierId)
     const supplier = await Supplier.findById(req.params.supplierId).exec();
-    console.log(22, supplier)
 
     res.send(supplier);
   } catch (e) {
@@ -89,7 +87,7 @@ supplierRouter.post('/:supplierId/product/import', async (req, res, next) => {
     await Promise.all(products.map(async (product) => {
       const alreadyPresent = await Product.findOne({ title: product.title }).exec();
       const productInfo = !alreadyPresent ? await Product.create(product) : alreadyPresent;
-      const stockExists = await SupplierStock.findOne({ productId: productInfo._id }).exec();
+      const stockExists = await SupplierStock.findOne({ productId: productInfo._id, supplierId: req.params.supplierId }).exec();
       if (stockExists) {
         await SupplierStock.updateOne({ productId: productInfo._id }, {
           $inc: {
@@ -116,7 +114,7 @@ supplierRouter.post('/:supplierId/order', async (req, res, next) => {
     const order = await SupplierOrder.create(req.body);
 
     await updateStockAfterOrder(order, SupplierStock, false, { supplierId: req.params.supplierId });
-    await updateStockAfterOrder(order, DistributorStock, true, { supplierId: req.params.supplierId });
+    await updateStockAfterOrder(order, DistributorStock, true, { }, 5);
     res.send();
   } catch (e) {
     next(e);
@@ -147,15 +145,11 @@ supplierRouter.post('/:supplierId/order/:orderId/return', async (req, res, next)
     const order = await SupplierOrder.findOne({ _id: req.params.orderId }).exec();
 
     if (order.status !== OrderStatuses.RETURNED) {
-      console.log(111, order);
       const a = await SupplierOrder.findOneAndUpdate({ _id: req.params.orderId }, { $set: {status: OrderStatuses.RETURNED} }, {new: true}).exec();
-      console.log(222, a);
 
       await updateStockAfterOrder(order, SupplierStock, true, { supplierId: req.params.supplierId });
-      console.log(333);
-      await updateStockAfterOrder(order, DistributorStock, false, { supplierId: req.params.supplierId });
+      await updateStockAfterOrder(order, DistributorStock, false, { });
     }
-    console.log(444);
 
     res.send();
   } catch (e) {

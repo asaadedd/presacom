@@ -1,0 +1,136 @@
+[{
+  "_id": {
+    "$oid": "61d629459c98d3ff8ef024a6"
+  },
+  "productId": "61b25faeed716853cf0595ea",
+  "outletId": "61d6146a0f9fa5708a8f911e",
+  "price": 18.1125,
+  "quantity": 0,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:01.316Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:36:00.629Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d629459c98d3ff8ef024a8"
+  },
+  "productId": "61b25faeed716853cf0595ec",
+  "outletId": "61d6146a0f9fa5708a8f911e",
+  "price": 12.075,
+  "quantity": 0,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:01.317Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:36:45.070Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d629509c98d3ff8ef0251e"
+  },
+  "productId": "61b25faeed716853cf0595ea",
+  "outletId": "61b9137545b7ad83d19751e2",
+  "price": 18.1125,
+  "quantity": 0,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:12.401Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:37:20.161Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d629509c98d3ff8ef02520"
+  },
+  "productId": "61b25faeed716853cf0595ee",
+  "outletId": "61b9137545b7ad83d19751e2",
+  "price": 6.0375,
+  "quantity": 0,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:12.403Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:37:20.162Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d629509c98d3ff8ef02522"
+  },
+  "productId": "61b25faeed716853cf0595f0",
+  "outletId": "61b9137545b7ad83d19751e2",
+  "price": 12.075,
+  "quantity": 350,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:12.404Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:37:46.201Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d6295b9c98d3ff8ef025a7"
+  },
+  "productId": "61b25faeed716853cf0595ee",
+  "outletId": "61d6146a0f9fa5708a8f911e",
+  "price": 6.0375,
+  "quantity": 400,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:23.385Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:37:00.989Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d6295b9c98d3ff8ef025a9"
+  },
+  "productId": "61b25faeed716853cf0595f0",
+  "outletId": "61d6146a0f9fa5708a8f911e",
+  "price": 12.075,
+  "quantity": 0,
+  "createdAt": {
+    "$date": "2022-01-05T23:27:23.386Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:37:00.990Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d62b77902e0f8a33a6a009"
+  },
+  "productId": "61b25faeed716853cf0595ea",
+  "outletId": "61d614490f9fa5708a8f911c",
+  "price": 18.1125,
+  "quantity": 500,
+  "createdAt": {
+    "$date": "2022-01-05T23:36:23.070Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:38:00.821Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d62b77902e0f8a33a6a00b"
+  },
+  "productId": "61b25faeed716853cf0595ec",
+  "outletId": "61d614490f9fa5708a8f911c",
+  "price": 12.075,
+  "quantity": 0,
+  "createdAt": {
+    "$date": "2022-01-05T23:36:23.072Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T23:38:00.822Z"
+  },
+  "__v": 0
+}]

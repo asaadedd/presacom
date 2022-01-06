@@ -5,7 +5,8 @@ export type IOutletOrder = OutletOrderDto & Document;
 
 const outletOrderSchema = new Schema( {
   price: { type: Number, required: true },
-  returned: { type: Boolean, required: false },
+  outletId: { type: String, required: true },
+  status: { type: String, required: true },
   entries: [{ productName: String, productId: String, quantity: Number, unitPrice: Number }],
 }, {
   timestamps: true,

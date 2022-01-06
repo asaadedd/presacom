@@ -1,5 +1,5 @@
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductWithStock, SupplierDto, SupplierOrderDto } from "@presacom/models";
+import { OrderStatuses, ProductWithStock, SupplierDto, SupplierOrderDto } from "@presacom/models";
 import axios from "axios";
 import { RootState } from "../../../store";
 import { SupplierInformation } from "../models/suppliers";
@@ -12,6 +12,7 @@ import { CustomOrderInformation } from "../../../shared/models/orders";
 export type SupplierState = {
   suppliers: AsyncEntityState<SupplierInformation>;
   supplierId: string | null;
+  showReturnedOrders: boolean;
 }
 
 const suppliersAdapter = createEntityAdapter<SupplierInformation>({
@@ -21,7 +22,8 @@ const suppliersAdapter = createEntityAdapter<SupplierInformation>({
 
 const initialState: SupplierState = {
   suppliers: suppliersAdapter.getInitialState({ loading: false }),
-  supplierId: null
+  supplierId: null,
+  showReturnedOrders: false,
 }
 
 export const getSuppliers = createAsyncThunk<SupplierDto[]>(
@@ -150,7 +152,13 @@ export const supplierSlice = createSlice({
     },
     resetSupplierId(state) {
       state.supplierId = null;
-    }
+    },
+    showSupplierReturnedOrders(state) {
+      state.showReturnedOrders = true;
+    },
+    hideSupplierReturnedOrders(state) {
+      state.showReturnedOrders = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -214,12 +222,13 @@ export const supplierSlice = createSlice({
 export const selectSupplierState = (state: RootState) => state.supplier;
 const selectSuppliersAdapter = createSelector(selectSupplierState, (state) => state.suppliers);
 const selectSupplierId = createSelector(selectSupplierState, (state) => state.supplierId);
+export const selectSupplierShowReturnedOrders = createSelector(selectSupplierState, (state) => state.showReturnedOrders);
 const selectSupplierEntries = createSelector(selectSuppliersAdapter, (state) => state.entities);
 const suppliersSelector = suppliersAdapter.getSelectors(selectSuppliersAdapter);
 
-export const  { setSupplierId, resetSupplierId } = supplierSlice.actions;
+export const  { setSupplierId, resetSupplierId, showSupplierReturnedOrders, hideSupplierReturnedOrders } = supplierSlice.actions;
 export const selectSuppliers = suppliersSelector.selectAll;
-export const selectSuppliersLoading = createSelector(selectSuppliersAdapter, (state) => state.loading);
+export const selectSuppliersLength = createSelector(suppliersSelector.selectAll, (supplier) => supplier.length);
 export const selectSuppliersError = createSelector(selectSuppliersAdapter, (state) => state.error);
 export const selectSupplierDetails = createSelector([selectSupplierId, selectSupplierEntries],
   (supplierId, entities): SupplierInformation | null | undefined => {
@@ -239,10 +248,10 @@ export const selectSupplierProducts = createSelector([selectSupplierId, selectSu
     }
   }
 );
-export const selectSupplierOrders = createSelector([selectSupplierId, selectSupplierEntries],
-  (supplierId, entities): CustomOrderInformation<SupplierOrderDto>[] => {
+export const selectSupplierOrders = createSelector([selectSupplierId, selectSupplierEntries, selectSupplierShowReturnedOrders],
+  (supplierId, entities, showReturnedOrders): CustomOrderInformation<SupplierOrderDto>[] => {
     if (supplierId && entities[supplierId]) {
-      return entities[supplierId]?.orders || [];
+      return (entities[supplierId]?.orders || []).filter((ord) => showReturnedOrders ? true : ord.status !== OrderStatuses.RETURNED);
     } else {
       return [];
     }

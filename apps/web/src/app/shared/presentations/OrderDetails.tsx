@@ -1,37 +1,30 @@
-import { useAppDispatch, useAppSelector } from "../../../store";
-import { getSupplierDetails, returnSupplierOrder, selectSupplierOrders } from "../store/supplier";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import classNames from "classnames";
-import React, { useState } from "react";
-import { OrderStatuses, OutletOrderDto, SupplierOrderDto } from "@presacom/models";
+import { ReactNode, useState } from "react";
+import { OrderStatuses } from "@presacom/models";
 import { CustomOrderInformation } from "../models/orders";
 
 interface OrderDetailsProps {
   order: CustomOrderInformation;
+  additionalInfo?: ReactNode;
+  returnOrder?: () => void;
 }
 
-function OrderDetails({ order }: OrderDetailsProps) {
+function OrderDetails({ order, returnOrder, additionalInfo }: OrderDetailsProps) {
   const [showConfirm, setShowConfirm] = useState(false);
-  const [orderToReturn, setOrderToReturn] = useState<CustomOrderInformation | null>(null);
-  const dispatch = useAppDispatch();
 
   const handleClose = () => setShowConfirm(false);
-  const handleShow = (ord: CustomOrderInformation) => {
-    setOrderToReturn(ord);
-    setShowConfirm(true);
-  };
-  const returnOrder = async () => {
-    if (orderToReturn) {
-      await dispatch(returnSupplierOrder(orderToReturn));
-      dispatch(getSupplierDetails(orderToReturn.supplierId));
-      setOrderToReturn(null);
+  const handleShow = () => setShowConfirm(true);
+  const onReturnOrder = async () => {
+    if (returnOrder) {
+      returnOrder();
     }
     handleClose();
   }
 
   return (
     <>
-      <Row>
+      <div className="d-flex border p-2">
         <Col xs="6" className="border-end">
           <div className="pb-2">
             <div className="fs-6 text-muted">Status</div>
@@ -46,9 +39,12 @@ function OrderDetails({ order }: OrderDetailsProps) {
             <div className="fs-6 fw-bold">{order.price}</div>
           </div>
           {
+            additionalInfo
+          }
+          {
             order.status !== OrderStatuses.RETURNED && (
               <div className="pb-2" >
-                <Button variant="outline-primary" size="sm" onClick={() => handleShow(order)}>Returneaza</Button>
+                <Button variant="outline-primary" size="sm" onClick={() => handleShow()}>Returneaza</Button>
               </div>
             )
           }
@@ -72,14 +68,14 @@ function OrderDetails({ order }: OrderDetailsProps) {
             })}
           </div>
         </Col>
-      </Row>
+      </div>
       <Modal show={showConfirm} onHide={handleClose}>
         <Modal.Body>Doriti sa returnati comanda?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Nu
           </Button>
-          <Button variant="primary" onClick={returnOrder}>
+          <Button variant="primary" onClick={onReturnOrder}>
             Da
           </Button>
         </Modal.Footer>
@@ -88,4 +84,4 @@ function OrderDetails({ order }: OrderDetailsProps) {
   );
 }
 
-export default SupplierOrderList;
+export default OrderDetails;

@@ -6,13 +6,14 @@ interface TableDisplayProps<T = any> {
   data: T[];
   checkedIds?: string[];
   useCheckboxes?: boolean;
+  useActions?: boolean;
   headers: TableHeader<string>[];
   onRowSelected?: (data: T) => void;
   onRowDeleted?: (id: string) => void;
   onRowChecked?: (ids: string[]) => void;
 }
 
-function TableDisplay({ checkedIds, headers, data, onRowSelected, onRowDeleted, onRowChecked, useCheckboxes }: TableDisplayProps) {
+function TableDisplay({ checkedIds, headers, data, onRowSelected, onRowDeleted, onRowChecked, useCheckboxes, useActions }: TableDisplayProps) {
   const [checkedRows, setCheckedRows] = useState<string[]>([]);
   const [isAllChecked, setAllChecked] = useState(false);
 
@@ -73,7 +74,9 @@ function TableDisplay({ checkedIds, headers, data, onRowSelected, onRowDeleted, 
             <th key={name}>{name}</th>
           ))
         }
-        <th></th>
+        {
+          useActions && <th></th>
+        }
       </tr></thead>
       <tbody style={{border: 0, borderColor: 'var(--bs-gray-300)'}}>
       {
@@ -87,12 +90,14 @@ function TableDisplay({ checkedIds, headers, data, onRowSelected, onRowDeleted, 
             }
             {
               headers.map(({key}) => (
-                <td key={`${sup._id}_${key}`} onClick={() => onRowSelected(sup)}>{sup[key]}</td>
+                <td key={`${sup._id}_${key}`} onClick={() => onRowSelected && onRowSelected(sup)}>{sup[key]}</td>
               ))
             }
-            <td>
-              <Button variant="danger" size="sm" onClick={() => onRowDeleted(sup._id)}>Delete</Button>
-            </td>
+            {
+              useActions && <td>
+                <Button variant="danger" size="sm" onClick={() => onRowDeleted && onRowDeleted(sup._id)}>Delete</Button>
+              </td>
+            }
           </tr>
         ))
       }

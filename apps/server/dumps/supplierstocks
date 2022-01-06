@@ -1,61 +1,166 @@
 [{
   "_id": {
-    "$oid": "61b25faeed716853cf0595f2"
+    "$oid": "61d61c33cdcd44b3199130d5"
   },
   "productId": "61b25faeed716853cf0595ee",
   "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 77,
-  "quantity": 801,
-  "createdAt": {
-    "$date": "2021-12-09T19:57:34.109Z"
-  },
-  "updatedAt": {
-    "$date": "2021-12-13T21:32:31.050Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61b25faeed716853cf0595f4"
-  },
-  "productId": "61b25faeed716853cf0595ec",
-  "supplierId": "61b2539a30a1cc57652f36eb",
   "price": 5,
-  "quantity": 1042,
+  "quantity": 2000,
   "createdAt": {
-    "$date": "2021-12-09T19:57:34.113Z"
+    "$date": "2022-01-05T22:31:15.264Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.049Z"
+    "$date": "2022-01-05T22:31:26.203Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b25faeed716853cf0595f6"
+    "$oid": "61d61c33cdcd44b3199130d7"
   },
   "productId": "61b25faeed716853cf0595ea",
   "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 20,
-  "quantity": 460,
+  "price": 15,
+  "quantity": 2000,
   "createdAt": {
-    "$date": "2021-12-09T19:57:34.117Z"
+    "$date": "2022-01-05T22:31:15.269Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.047Z"
+    "$date": "2022-01-05T22:31:26.208Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "61b25faeed716853cf0595f8"
+    "$oid": "61d61c33cdcd44b3199130d9"
   },
   "productId": "61b25faeed716853cf0595f0",
   "supplierId": "61b2539a30a1cc57652f36eb",
-  "price": 100,
-  "quantity": 1659,
+  "price": 10,
+  "quantity": 2000,
   "createdAt": {
-    "$date": "2021-12-09T19:57:34.122Z"
+    "$date": "2022-01-05T22:31:15.271Z"
   },
   "updatedAt": {
-    "$date": "2021-12-13T21:32:31.052Z"
+    "$date": "2022-01-05T22:31:26.209Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61c33cdcd44b3199130db"
+  },
+  "productId": "61b25faeed716853cf0595ec",
+  "supplierId": "61b2539a30a1cc57652f36eb",
+  "price": 10,
+  "quantity": 2000,
+  "createdAt": {
+    "$date": "2022-01-05T22:31:15.274Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:31:26.211Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61cb7b00988072776be87"
+  },
+  "productId": "61b25faeed716853cf0595ee",
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 5,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:27.895Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:27.895Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61cb7b00988072776be89"
+  },
+  "productId": "61b25faeed716853cf0595ea",
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 15,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:27.898Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:27.898Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61cb7b00988072776be8b"
+  },
+  "productId": "61b25faeed716853cf0595f0",
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 10,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:27.900Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:27.900Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61cb7b00988072776be8d"
+  },
+  "productId": "61b25faeed716853cf0595ec",
+  "supplierId": "61b2526330a1cc57652f36d9",
+  "price": 10,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:27.903Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:27.903Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61ccbb00988072776be9d"
+  },
+  "productId": "61b25faeed716853cf0595f0",
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 10,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:47.885Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:47.885Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61ccbb00988072776bea0"
+  },
+  "productId": "61b25faeed716853cf0595ee",
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 5,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:47.889Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:47.889Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d61ccbb00988072776bea2"
+  },
+  "productId": "61b25faeed716853cf0595ec",
+  "supplierId": "61b2569e5ff28133ba44dae4",
+  "price": 10,
+  "quantity": 1000,
+  "createdAt": {
+    "$date": "2022-01-05T22:33:47.891Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T22:33:47.891Z"
   },
   "__v": 0
 }]

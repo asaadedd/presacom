@@ -5,7 +5,6 @@ export type IDistributorStock = DistributorStockDto & Document;
 
 const distributorStockSchema = new Schema( {
   productId: { type: Schema.Types.ObjectId, required: true },
-  supplierId: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
 }, {

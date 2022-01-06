@@ -1,9 +1,8 @@
 import { useAppDispatch, useAppSelector } from "../../../store";
 import React, { useEffect } from "react";
-import LoadingOverlay from "../../../shared/presentations/LoadingOverlay";
 import { Container } from "react-bootstrap";
 import FileSelector from "../../../shared/presentations/FileSelector";
-import { deleteOutlet, getOutlets, importOutlets, selectOutlets, selectOutletsLoading } from "../store/outlet";
+import { deleteOutlet, getOutlets, importOutlets, selectOutlets } from "../store/outlet";
 import TableDisplay from "../../../shared/presentations/TableDisplay";
 import { outletsHeaders } from "../models/outlets";
 import AddOutlet from "../containers/AddOutlet";
@@ -12,7 +11,6 @@ import { OutletDto } from "@presacom/models";
 
 function OutletList() {
   const dispatch = useAppDispatch();
-  const outletsLoading = useAppSelector(selectOutletsLoading);
   const outlets = useAppSelector(selectOutlets);
   const navigate = useNavigate();
 
@@ -31,24 +29,19 @@ function OutletList() {
   }, [dispatch]);
 
   return (
-    <LoadingOverlay
-      loading={outletsLoading}
-      text='Se incarca distribuitori...'
-    >
-      <Container className="pt-3">
-        <div className="d-flex justify-content-between">
-          <AddOutlet />
-          <FileSelector
-            title="Importa distribuitori"
-            extension=".xlsx"
-            onFileLoaded={onFileLoaded}
-          />
-        </div>
-        <div className="mt-3">
-          <TableDisplay data={outlets} headers={outletsHeaders} onRowDeleted={deleteOutletDetails} onRowSelected={goToOutletDetails} />
-        </div>
-      </Container>
-    </LoadingOverlay>
+    <Container className="pt-3">
+      <div className="d-flex justify-content-between">
+        <AddOutlet />
+        <FileSelector
+          title="Importa distribuitori"
+          extension=".xlsx"
+          onFileLoaded={onFileLoaded}
+        />
+      </div>
+      <div className="mt-3">
+        <TableDisplay useActions={true} data={outlets} headers={outletsHeaders} onRowDeleted={deleteOutletDetails} onRowSelected={goToOutletDetails} />
+      </div>
+    </Container>
   );
 }
 

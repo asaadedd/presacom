@@ -1,46 +1,31 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Form, FormCheck, Row } from "react-bootstrap";
 import DashboardWidget from "../../../shared/presentations/DashboardWidget";
-import ProfitChart from "../../../shared/presentations/ProfitChart";
-import TimeboxSelector, { SelectedTime } from "../../../shared/presentations/TimeboxSelector";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import CreateOrder from "../../../shared/presentations/CreateOrder";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { getDistributorProducts, selectDistributorProducts } from "../store/distributorProducts";
-import { OrderEntry } from "@presacom/models";
+import { OrderEntry, OrderStatuses, OutletDto } from "@presacom/models";
 import TableDisplay from "../../../shared/presentations/TableDisplay";
-import { productHeaders } from "../../../shared/models/products";
-import { getDistributorOrders, selectDistributorOrders } from "../store/distributorOrders";
+import DistributorStock from '../containers/DistributorStock';
+import DistributorOrdersList from '../containers/DistributorOrdersList';
+import DistributorInformation from '../containers/DistributorInformation';
+import DistributorProfit from '../containers/DistributorProfit';
 
 function Home() {
-  const [selectedTime, setSelectedTime] = useState<SelectedTime | undefined>();
-  const products = useAppSelector(selectDistributorProducts);
-  const orders = useAppSelector(selectDistributorOrders);
-  const dispatch = useAppDispatch();
-
-  const onOrderSubmit = (entries: OrderEntry[]) => {
-    console.log(1, entries);
-  }
-
-  useEffect(() => {
-    dispatch(getDistributorProducts());
-    dispatch(getDistributorOrders());
-  }, [dispatch])
-
   return (
     <Container className="pt-3">
       <Row>
-        <Col xs="6">
-          <DashboardWidget title="Stock"
-                           actions={<CreateOrder products={products} onSubmit={onOrderSubmit} />}>
-            <TableDisplay useCheckboxes={false} data={products} headers={productHeaders} />
-          </DashboardWidget>
+        <Col xs="6" className="mb-3">
+          <DistributorInformation />
         </Col>
-        <Col xs="6">
-          <DashboardWidget title="Comenzi"
-                           actions={<TimeboxSelector selectedTime={selectedTime} onTimeSelect={setSelectedTime}/>}
-          >
-            <TableDisplay useCheckboxes={false} data={orders} headers={productHeaders} />
-          </DashboardWidget>
+        <Col xs="6" className="mb-3">
+          <DistributorStock />
+        </Col>
+        <Col xs="12" className="mb-3">
+          <DistributorProfit />
+        </Col>
+        <Col xs="12">
+          <DistributorOrdersList />
         </Col>
       </Row>
     </Container>

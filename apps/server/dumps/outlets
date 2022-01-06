@@ -13,4 +13,34 @@
     "$date": "2021-12-14T21:58:13.517Z"
   },
   "__v": 0
+},{
+  "_id": {
+    "$oid": "61d614490f9fa5708a8f911c"
+  },
+  "name": "Magazin Loga",
+  "address": "Str Loga nr 12",
+  "phoneNumber": "0711110111",
+  "email": "magazin-loga@gmail.com",
+  "createdAt": {
+    "$date": "2022-01-05T21:57:29.136Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T21:57:29.136Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d6146a0f9fa5708a8f911e"
+  },
+  "name": "Magazin Centru",
+  "address": "Str 1 decembrie nr 123",
+  "phoneNumber": "0765432198",
+  "email": "magazin-centru@gmail.com",
+  "createdAt": {
+    "$date": "2022-01-05T21:58:02.735Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-05T21:58:02.735Z"
+  },
+  "__v": 0
 }]

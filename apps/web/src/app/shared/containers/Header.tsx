@@ -9,7 +9,16 @@ export function Header() {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="/">PresaCom</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img
+            alt=""
+            src="/assets/images/brand_white.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />
+          PresaCom
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>

@@ -1,15 +1,19 @@
-import { OutletOrderDto } from "@presacom/models";
+import { CustomOrderInformation } from './../../../shared/models/orders';
+import { OrderStatuses, OutletOrderDto } from "@presacom/models";
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { resetOutletErrors, setOutletErrors, startOutletLoading, stopOutletLoading } from "./outlet";
+import { resetOutletErrors, setOutletErrors } from "./outlet";
 import { RootState } from "../../../store";
+import { formatOrdersInformation } from "../../../shared/utils/order";
 
 export type OutletOrdersState = {
-  orders: OutletOrderDto[];
+  orders: CustomOrderInformation<OutletOrderDto>[];
+  showReturnedOrders: boolean;
 };
 
 const initialState: OutletOrdersState = {
-  orders: []
+  orders: [],
+  showReturnedOrders: false,
 };
 
 export const placeOutletOrder = createAsyncThunk<void, OutletOrderDto>(
@@ -17,10 +21,8 @@ export const placeOutletOrder = createAsyncThunk<void, OutletOrderDto>(
   async (order, { rejectWithValue, dispatch }) => {
     try {
       dispatch(resetOutletErrors());
-      dispatch(startOutletLoading());
       await axios.post(`/api/outlet/${order.outletId}/order`, order);
       await dispatch(getOutletOrders(order.outletId));
-      dispatch(stopOutletLoading());
       return;
     } catch (err: any) {
       dispatch(setOutletErrors(err.message));
@@ -34,10 +36,8 @@ export const returnOutletOrder = createAsyncThunk<void, OutletOrderDto>(
   async (order, { rejectWithValue, dispatch }) => {
     try {
       dispatch(resetOutletErrors());
-      dispatch(startOutletLoading());
-      await axios.post(`/api/outlet/${order.outletId}/order/${order._id}/return`);
+      await axios.post(`/api/outlet/${order.outletId}/order/${order._id}/return`, order);
       await dispatch(getOutletOrders(order.outletId));
-      dispatch(stopOutletLoading());
       return;
     } catch (err: any) {
       dispatch(setOutletErrors(err.message));
@@ -46,18 +46,25 @@ export const returnOutletOrder = createAsyncThunk<void, OutletOrderDto>(
   }
 );
 
-export const getOutletOrders = createAsyncThunk<OutletOrderDto[], string>(
+export const getOutletOrders = createAsyncThunk<CustomOrderInformation<OutletOrderDto>[], string>(
   'outletOrders/getOutletOrders',
-  async (payload ) => {
+  async (payload, { getState }) => {
     const response = await axios.get<OutletOrderDto[]>(`/api/outlet/${payload}/order`);
-    return response.data;
+    return formatOrdersInformation(response.data);
   }
 );
 
 export const outletOrdersSlice = createSlice({
   name: 'outletOrders',
   initialState,
-  reducers: {},
+  reducers: {
+    showOutletReturnedOrders(state) {
+      state.showReturnedOrders = true;
+    },
+    hideOutletReturnedOrders(state) {
+      state.showReturnedOrders = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getOutletOrders.fulfilled, (state, action) => {
@@ -68,6 +75,11 @@ export const outletOrdersSlice = createSlice({
       });
   }
 });
+export const  { showOutletReturnedOrders, hideOutletReturnedOrders } = outletOrdersSlice.actions;
+
 
 const selectOutletOrdersState = (state: RootState) => state.outletOrders;
-export const selectOutletOrders = createSelector(selectOutletOrdersState, (state) => state.orders);
+export const selectOutletOrders = createSelector(selectOutletOrdersState, (state) => 
+  state.orders.filter((ord) => state.showReturnedOrders ? true : ord.status !== OrderStatuses.RETURNED)
+);
+export const selectOutletShowReturnedOrder = createSelector(selectOutletOrdersState, (state) => state.showReturnedOrders);
